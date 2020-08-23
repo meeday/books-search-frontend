@@ -3,7 +3,7 @@ import { ListItem } from "../list";
 import { Row, Col } from "../grid";
 import "./style.css";
 
-export function Book({
+export default function Book({
   title,
   subtitle,
   authors,

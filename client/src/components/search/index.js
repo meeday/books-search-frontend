@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Search({ query, handleInputChange, handleSubmit }) {
+export default function Search({ query, handleInputChange, handleSubmit }) {
   return (
     <form>
       <div className="form-group">

@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Card({ icon, title, children }) {
+export default function Card({ icon, title, children }) {
   return (
     <div className="card mt-4">
       <div className="card-header">
