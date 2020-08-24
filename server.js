@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+const dotenv = require("dotenv");
+dotenv.config();
 
 const PORT = process.env.PORT || 3001;
 
@@ -11,7 +13,7 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-
+require("./models");
 app.use(routes);
 
 mongoose.connect(
