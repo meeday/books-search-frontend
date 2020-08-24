@@ -1,12 +1,12 @@
 import React from "react";
 
-export default function Card({ icon, title, children }) {
+function Card({ title, children }) {
   return (
     <div className="card mt-4">
       <div className="card-header">
         <h3>
           <strong>
-            <i className={`fa fa-${icon}`} aria-hidden="true" /> {title}
+           {title}
           </strong>
         </h3>
       </div>
@@ -14,3 +14,5 @@ export default function Card({ icon, title, children }) {
     </div>
   );
 }
+
+export default Card;
