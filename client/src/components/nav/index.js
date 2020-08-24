@@ -5,14 +5,16 @@ import "./style.css";
 class Nav extends Component {
   state = {
     open: false,
-    width: window.innerWidth,
+    width: window.innerWidth
   };
 
   updateWidth = () => {
     const newState = { width: window.innerWidth };
+
     if (this.state.open && newState.width > 991) {
       newState.open = false;
     }
+
     this.setState(newState);
   };
 
@@ -30,8 +32,8 @@ class Nav extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
-        <Link className="navbar-barnd" to="/">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <Link className="navbar-brand" to="#">
           Google Books
         </Link>
         <button
@@ -41,23 +43,16 @@ class Nav extends Component {
           data-target="#navbarNav"
           aria-controls="navbarNav"
           aria-expanded="false"
-          aria-lable="Toggle navigation"
+          aria-label="Toggle navigation"
         >
-          <soan className="navbar-toggler-icon" />
+          <span className="navbar-toggler-icon" />
         </button>
-        <div
-          className={`${this.state.open ? "" : "collapse "}navbar-collapse`}
-          id="navbarNav"
-        >
+        <div className={`${this.state.open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
-                className={
-                  window.location.pathname === "/"
-                    ? "nav-link active"
-                    : "nav-link"
-                }
+                className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
                 to="/"
               >
                 Search
@@ -66,11 +61,7 @@ class Nav extends Component {
             <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
-                className={
-                  window.location.pathname === "/saved"
-                    ? "nav-link active"
-                    : "nav-link"
-                }
+                className={window.location.pathname === "/saved" ? "nav-link active" : "nav-link"}
                 to="/saved"
               >
                 Saved

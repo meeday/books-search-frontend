@@ -1,28 +1,35 @@
 import React from "react";
+import "./style.css";
 
-export default function Search({ query, handleInputChange, handleSubmit }) {
+function Form({ q, handleInputChange, handleFormSubmit }) {
   return (
     <form>
       <div className="form-group">
         <label htmlFor="Query">
-          <strong>Search Book</strong>
+          <strong className="text-white large">What Book Are You Looking For?</strong>
         </label>
         <input
           className="form-control"
           id="Title"
           type="text"
-          value={query}
-          placeholder="search for book"
-          name="query"
+          value={q}
+          placeholder="Search Book"
+          name="q"
           onChange={handleInputChange}
           required
         />
       </div>
       <div className="pull-right">
-        <button onClick={handleSubmit} type="submit" className="btn btn-lg btn-primary float-right">
+        <button
+          onClick={handleFormSubmit}
+          type="submit"
+          className="btn btn-lg btn-primary float-right"
+        >
           Search
         </button>
       </div>
     </form>
   );
 }
+
+export default Form;

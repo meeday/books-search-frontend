@@ -1,0 +1,8 @@
+#Title {
+color: white;
+}
+
+.form-control::placeholder {
+  color: white;
+  font-size: small;
+}

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/jumbotron";
-import Card from "../components/card";
-import Book from "../components/book";
-import Footer from "../components/footer";
-import API from "../utils/api";
-import { Col, Row, Container } from "../components/grid";
-import { List } from "../components/list";
+import Jumbotron from "../components/Jumbotron";
+import Card from "../components/Card";
+import Book from "../components/Book";
+import Footer from "../components/Footer";
+import API from "../utils/API";
+import { Col, Row, Container } from "../components/Grid";
+import { List } from "../components/List";
 
 class Saved extends Component {
   state = {
@@ -18,17 +18,19 @@ class Saved extends Component {
 
   getSavedBooks = async () => {
     try {
-      const result = await API.getSavedBooks();
+      const res = await API.getSavedBooks();
+
       this.setState({
-        books: result.data,
+        books: res.data,
       });
     } catch (error) {
       console.log(error);
     }
   };
 
-  handleDelete = async (id) => {
-    this.getSavedBooks() = await API.deleteBook(id);
+  handleBookDelete = async (id) => {
+   await API.deleteBook(id)
+    this.getSavedBooks();
   };
 
   render() {
@@ -37,15 +39,18 @@ class Saved extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1 className="text-center">
+              <h1 className="text-left text-white">
                 <strong>Google Books Search</strong>
               </h1>
+              <h2 className="text-left text-white">
+                Saved Books
+              </h2>
             </Jumbotron>
           </Col>
         </Row>
         <Row>
           <Col size="md-12">
-            <Card title="Saved Books" icon="download">
+            <div title="Saved Books" icon="download">
               {this.state.books.length ? (
                 <List>
                   {this.state.books.map((book) => (
@@ -59,7 +64,7 @@ class Saved extends Component {
                       image={book.image}
                       Button={() => (
                         <button
-                          onClick={() => this.handleDelete(book._id)}
+                          onClick={() => this.handleBookDelete(book._id)}
                           className="btn btn-danger ml-2"
                         >
                           Delete
@@ -69,9 +74,9 @@ class Saved extends Component {
                   ))}
                 </List>
               ) : (
-                <h2 className="text-center">You Have No Saved Books</h2>
+                <h2 className="text-center">No Saved Books</h2>
               )}
-            </Card>
+            </div>
           </Col>
         </Row>
         <Footer />
