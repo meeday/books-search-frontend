@@ -1,19 +1,26 @@
 import axios from "axios";
 
 export default {
-  getBooks: (query) => {
-    return axios.get("/api/google", { params: { query: `title:${query}` } });
+  // Gets books from the Google API
+  getBooks: async (q) => {
+    const result = await axios.get("/api/google", {
+      params: { q: "title:" + q },
+    });
+    return result;
   },
-
-  getSavedBooks: () => {
-    return axios.get("/api/books");
+  // Gets all saved books
+  getSavedBooks: async () => {
+    const result = await axios.get("/api/books");
+    return result;
   },
-
-  deleteBook: (id) => {
-    return axios.delete(`/api/books/${id}`);
+  // Deletes the saved book with the given id
+  deleteBook: async (id) => {
+    const result = await axios.delete("/api/books/" + id);
+    return result;
   },
-
-  saveBook: (book) => {
-    return axios.post("/api/books", book);
+  // Saves an book to the database
+  saveBook: async (bookData) => {
+    const result = await axios.post("/api/books", bookData);
+    return result;
   },
 };
