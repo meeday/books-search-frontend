@@ -79,7 +79,7 @@ class Home extends Component {
           <Col size="md-12">
             <br/>
             <div title="Results">
-              {this.state.books.length ? (
+              {this.state.books && this.state.books.length ? (
                 <List>
                   {this.state.books.map((book) => (
                     <Book
